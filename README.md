@@ -22,3 +22,5 @@ Only tested on Google Chrome
 ## Uses the following API's
 
 [Dark Sky](https://darksky.net)
+
+## Thanks to https://github.com/a-type for the boilerplate.
