@@ -17,31 +17,34 @@ const generateGreeting = (name) => {
             text = greeting.text.replace('%N', name);
         }
     });
-    
+
     return text;
 };
 
 const generateState = (name) => {
     let now = moment();
     return {
+        time: now.format('h:mma'),
+        date: now.format('dddd, MMMM Do'),
         greeting: generateGreeting(name)
     }
 };
 
-export default class Greeting extends Component {      
+export default class Time extends Component {
     componentDidMount() {
         let self = this;
         (function refresh() {
             self.forceUpdate();
-            setTimeout(refresh, 60 * 1000);
+            setTimeout(refresh, 1000);
         })();
     }
     
     render () {
-        const state = generateState(this.props.user.name);
+        const state = generateState();
         return (
             <div className='greeting component col-sm-5'>
-                <h3 className='greeting-text text-right'>{state.greeting}</h3>
+                <h1 className='greeting-time text-right'>{state.time}</h1>
+                <h2 className='greeting-date text-right'>{state.date}</h2>
             </div>
         );
     }

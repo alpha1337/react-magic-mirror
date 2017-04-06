@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import Greeting from './Greeting';
 import Weather from './Weather';
+import Time from './Time';
 const request = require('browser-request');
 const moment = require('moment');
 
-const weatherUpdateInterval = 60 * 60 * 1000;
+const weatherUpdateInterval = 60 * 1000;
 
 const getTime = () => {
     return moment().format('h:mm a');
@@ -65,8 +66,14 @@ export default class Home extends Component {
         return (
             <div className={className}>
                 <div className='info'>
-                    <Greeting user={this.state.user}/>
+
+                    {/* Local Forecast */}
                     <Weather forecast={this.state.forecast}/>
+                    {/* Local Time */}
+                    <Time />
+                    {/* Greeting */}
+                    <Greeting user={this.state.user}/>
+
                 </div>
             </div>
         );
