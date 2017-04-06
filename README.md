@@ -1,29 +1,24 @@
 # react-magic-mirror
-A take on the Raspberry Pi magic mirror using koajs and react.
+An API driven magic mirror project that will interface with devices such as Alexa & Google Maps.
 
-## features
+## Features
 
-* greeting
-* weather
-* idle images
+* WIP - Weather
+* WIP - Traffic
+* Greeting
+* Date & Time
 
-I don't actually have my mirror in yet, so I haven't tested it in anything other than a browser.
+Only tested on Google Chrome
 
-## running
-Create a config file like `config-example.json`
-
+## Running this app
 `npm start`
 
-## building
+## Build
 `gulp build`
 
-## developing
+## Dev ( Watch + Build )
 `gulp dev`
 
-## thanks to
+## Uses the following API's
 
-[unsplash](www.unsplash.com)
-
-[forecast font](http://forecastfont.iconvau.lt/)
-
-[forecast.io](https://developer.forecast.io/)
+[Dark Sky](https://darksky.net)
