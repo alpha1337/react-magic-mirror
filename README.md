@@ -23,4 +23,5 @@ Only tested on Google Chrome
 
 [Dark Sky](https://darksky.net)
 
-## Thanks to https://github.com/a-type for the boilerplate.
+## Thanks
+https://github.com/a-type for the boilerplate.
