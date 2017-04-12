@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Greeting from './Greeting';
 import Weather from './Weather';
 import Time from './Time';
+import Quote from './Quote';
 const request = require('browser-request');
 const moment = require('moment');
 
@@ -42,20 +43,29 @@ export default class Home extends Component {
         });
     }
 
+    fetchQuote () {
+        let self = this;
+
+        request.get('/quote', (er, response) => {
+            self.setState({
+                user: JSON.parse(response.body)
+            });
+        });
+    }
+
     componentDidMount () {
         this.fetchUser();
+        this.fetchQuote();
 
         let self = this;
 
         (function updateTime() {
             self.setState({ time: getTime() });
-
             setTimeout(updateTime, 60 * 1000);
         })();
 
         (function updateWeather() {
             self.fetchWeather();
-
             setTimeout(updateWeather, weatherUpdateInterval);
         })();
     }
@@ -73,6 +83,8 @@ export default class Home extends Component {
                     <Time />
                     {/* Greeting */}
                     <Greeting user={this.state.user}/>
+
+                    <Quote quote={this.state.quote}/>
 
                 </div>
             </div>

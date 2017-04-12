@@ -10,6 +10,7 @@ const config = require('./config');
 
 const Path = require('path');
 const Forecast = require('forecast.io-bluebird');
+
 let forecast = new Forecast({
     key: config.forecastio.apiKey,
     timeout: 2500
@@ -48,6 +49,12 @@ const router = new Router();
 router.get('/user', function * () {
     this.body = config.user;
 });
+
+// http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en
+router.get('/quote', function * () {
+    this.body = config.quote;
+});
+
 
 router.get('/weather', function * () {
      let result = yield forecast.fetch(config.forecastio.location.lat, config.forecastio.location.lng);

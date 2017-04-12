@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 const moment = require('moment');
 
 const greetings = [
-    { start: 0, end: 6, text: 'You\'re up late.' },
-    { start: 6, end: 12, text: 'Good morning, %N.' },
-    { start: 12, end: 19, text: 'Good afternoon, %N.' },
-    { start: 19, end: 24, text: 'Good evening, %N.' }
+    { start: 0, end: 6, text: 'You\'re up late, %N' },
+    { start: 6, end: 12, text: 'Good morning, %N' },
+    { start: 12, end: 19, text: 'Good afternoon, %N' },
+    { start: 19, end: 24, text: 'Good evening, %N' }
 ];
 
 const generateGreeting = (name) => {
@@ -40,7 +40,7 @@ export default class Greeting extends Component {
     render () {
         const state = generateState(this.props.user.name);
         return (
-            <div className='greeting component col-sm-5'>
+            <div className='greeting component col-sm-8'>
                 <h3 className='greeting-text text-right'>{state.greeting}</h3>
             </div>
         );

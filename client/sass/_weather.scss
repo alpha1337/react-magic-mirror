@@ -1,8 +1,18 @@
 .weather {
-    //colors
-    $color_bright_turquoise_approx: #0cf;
-    $color_hunter_green_approx: #161616;
-    $background: #161616;
+    padding: 0;
+
+    .iconWrapper {
+        padding: 0;
+    }
+
+    .forecastSummary {
+        margin-top: -1em;
+    }
+
+    .forecastLabel {
+        font-size: 14px;
+        margin: 5px 0 12px;
+    }
 
     //@extend-elements
     //.rays:before, .rays:after
@@ -64,12 +74,13 @@
     .icon {
         position: relative;
         display: inline-block;
-        width: 12em;
-        height: 10em;
+        width: 100%;
+        height: 40px;
         font-size: 0.5em;
         color: $background;
         &.large {
             font-size: 1em;
+            height: 8em;
         }
     }
     .cloud {
@@ -82,7 +93,11 @@
         margin: -1.84375em;
         background: currentColor;
         border-radius: 50%;
-        box-shadow: -2.1875em 0.6875em 0 -0.6875em, 2.0625em 0.9375em 0 -0.9375em, 0 0 0 0.375em $white, -2.1875em 0.6875em 0 -0.3125em $white, 2.0625em 0.9375em 0 -0.5625em $white;
+        box-shadow: -2.1875em 0.6875em 0 -0.6875em,
+                    2.0625em 0.9375em 0 -0.9375em,
+                    0 0 0 0.375em $white,
+                    -2.1875em 0.6875em 0 -0.3125em $white,
+                    2.0625em 0.9375em 0 -0.5625em $white;
         &:after {
             content: '';
             position: absolute;
@@ -97,7 +112,11 @@
         &:nth-child(2) {
             z-index: 0;
             background: $white;
-            box-shadow: -2.1875em 0.6875em 0 -0.6875em $white, 2.0625em 0.9375em 0 -0.9375em $white, 0 0 0 0.375em $white, -2.1875em 0.6875em 0 -0.3125em $white, 2.0625em 0.9375em 0 -0.5625em $white;
+            box-shadow: -2.1875em 0.6875em 0 -0.6875em $white,
+                        2.0625em 0.9375em 0 -0.9375em $white,
+                        0 0 0 0.375em $white,
+                        -2.1875em 0.6875em 0 -0.3125em $white,
+                        2.0625em 0.9375em 0 -0.5625em $white;
             opacity: 0.3;
             transform: scale(0.5) translate(6em, -3em);
             animation: cloud 4s linear infinite;
@@ -151,9 +170,11 @@
             width: 1.125em;
             height: 1.125em;
             margin: -1em 0 0 -0.25em;
-            background: $color_bright_turquoise_approx;
+            background: $turquoise;
             border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
-            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, -0.875em 1.125em 0 -0.125em $white_20, -1.375em -0.125em 0 $white_20;
+            box-shadow: 0.625em 0.875em 0 -0.125em $white_20,
+                        -0.875em 1.125em 0 -0.125em $white_20,
+                        -1.375em -0.125em 0 $white_20;
             transform: rotate(-28deg);
             animation: rain 3s linear infinite;
         }
@@ -252,18 +273,26 @@
     }
     @keyframes rain {
         0% {
-            background: $color_bright_turquoise_approx;
-            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, -0.875em 1.125em 0 -0.125em $white_20, -1.375em -0.125em 0 $color_bright_turquoise_approx;
+            background: $turquoise;
+            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, 
+            -0.875em 1.125em 0 -0.125em $white_20,
+            -1.375em -0.125em 0 $turquoise;
         }
         25% {
-            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, -0.875em 1.125em 0 -0.125em $color_bright_turquoise_approx, -1.375em -0.125em 0 $white_20;
+            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, 
+            -0.875em 1.125em 0 -0.125em $turquoise,
+            -1.375em -0.125em 0 $white_20;
         }
         50% {
             background: $white_30;
-            box-shadow: 0.625em 0.875em 0 -0.125em $color_bright_turquoise_approx, -0.875em 1.125em 0 -0.125em $white_20, -1.375em -0.125em 0 $white_20;
+            box-shadow: 0.625em 0.875em 0 -0.125em $turquoise, 
+            -0.875em 1.125em 0 -0.125em $white_20,
+            -1.375em -0.125em 0 $white_20;
         }
         100% {
-            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, -0.875em 1.125em 0 -0.125em $white_20, -1.375em -0.125em 0 $color_bright_turquoise_approx;
+            box-shadow: 0.625em 0.875em 0 -0.125em $white_20, 
+            -0.875em 1.125em 0 -0.125em $white_20,
+            -1.375em -0.125em 0 $turquoise;
         }
     }
     @keyframes lightning {
@@ -273,8 +302,8 @@
             opacity: 0.2;
         }
         50% {
-            color: $color_bright_turquoise_approx;
-            background: $color_bright_turquoise_approx;
+            color: $turquoise;
+            background: $turquoise;
             opacity: 1;
         }
         55% {

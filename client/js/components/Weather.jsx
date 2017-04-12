@@ -12,53 +12,109 @@ export default class Weather extends Component {
         else {
 
 
-            const high = forecast.daily.data[0].temperatureMax + '°';
-            const low = forecast.daily.data[0].temperatureMin + '°';
-            const now = forecast.currently.temperature + '°';
-
-
             const dailyForecast = forecast.daily.data.map(function(data, i){
                 let unixTimestamp = data.time * 1000;
-                const date = Moment(unixTimestamp).format('dddd');
+                const date = Moment(unixTimestamp).format('ddd');
 
 
                 const high = Math.ceil(data.temperatureMax) + '°';
                 const low  = Math.floor(data.temperatureMin) + '°';
+                const now  = Math.floor(forecast.currently.temperature) + '°';
 
-                const cloudy =  <div className='icon cloudy'>
-                                    <div className='cloud'></div>
-                                    <div className='cloud'></div>
-                                </div>;
 
+                //TODO: find a better way to loop icons
 
                 if (i === 0) {
                     return (
-                        <div>
-                            <div key={i} className="row">
-                                <div className="col-sm-3">
-                                    <div className='icon cloudy'>
-                                        <div className='cloud'></div>
-                                        <div className='cloud'></div>
+                        <div key={i} className="">
+
+                            <div className="col-sm-6">
+                                <h1>{now}</h1>
+                            </div>
+
+
+
+                            <div className="col-sm-6">
+
+
+                                {forecast.minutely.icon === 'partly-cloudy-day' &&
+                                <div className='icon cloudy large'>
+                                    <div className='cloud'></div>
+                                    <div className='cloud'></div>
+                                </div>
+                                }
+
+                                {forecast.minutely.icon === 'partly-cloudy-night' &&
+                                <div className='icon cloudy large'>
+                                    <div className='cloud'></div>
+                                    <div className='cloud'></div>
+                                </div>
+                                }
+
+                                {forecast.minutely.icon === 'clear-day' &&
+                                <div className='icon sunny large'>
+                                    <div className='sun'>
+                                        <div className='rays'></div>
                                     </div>
                                 </div>
+                                }
 
-                                <div className="col-sm-9">
-                                    <p>{forecast.currently.summary} - {low} / {high}</p>
-                                    <p>{forecast.daily.summary}</p>
+                                {forecast.minutely.icon === 'rain' &&
+                                <div className='icon rainy large'>
+                                    <div className='cloud'></div>
+                                    <div className='rain'></div>
                                 </div>
+                                }
+
+                            </div>
+
+
+                            <div className="col-sm-12 forecastSummary">
+                                <hr/>
+                                <h2>{forecast.currently.summary}</h2>
+                                <p>{forecast.hourly.summary}</p>
+                                <hr/>
+                            </div>
+
+
+                        </div>
+                )
+            } else if (i <= 6) {
+                return (
+                    <div key={i} className="col-sm-4 iconWrapper">
+                        <h4 className="text-center">{date}</h4>
+
+                        {data.icon === 'partly-cloudy-day' &&
+                        <div className='icon cloudy'>
+                            <div className='cloud'></div>
+                            <div className='cloud'></div>
+                        </div>
+                        }
+
+                        {data.icon === 'partly-cloudy-night' &&
+                        <div className='icon cloudy'>
+                            <div className='cloud'></div>
+                            <div className='cloud'></div>
+                        </div>
+                        }
+
+                        {data.icon === 'clear-day' &&
+                        <div className='icon sunny'>
+                            <div className='sun'>
+                                <div className='rays'></div>
                             </div>
                         </div>
-                    )
-                } else if (i <= 6) {
-                    return (
+                        }
 
-                        <div key={i} className="col-sm-2">
-                            <h4>{date}</h4>
-
-                            {cloudy}
-
-                            <h4>{low} / {high}</h4>
+                        {data.icon === 'rain' &&
+                        <div className='icon rainy'>
+                            <div className='cloud'></div>
+                            <div className='rain'></div>
                         </div>
+                        }
+
+                        <h4 className="text-center forecastLabel">{low} / {high}</h4>
+                    </div>
                     );
                 }
 
@@ -70,7 +126,7 @@ export default class Weather extends Component {
             return (
 
                 
-                <div className='weather component col-sm-7'>
+                <div className='weather component col-sm-4'>
                     {dailyForecast}
                 </div>
             );

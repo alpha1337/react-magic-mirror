@@ -42,7 +42,7 @@ export default class Time extends Component {
     render () {
         const state = generateState();
         return (
-            <div className='greeting component col-sm-5'>
+            <div className='time component col-sm-offset-3 col-sm-5'>
                 <h1 className='greeting-time text-right'>{state.time}</h1>
                 <h2 className='greeting-date text-right'>{state.date}</h2>
             </div>
