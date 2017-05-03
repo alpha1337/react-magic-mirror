@@ -3,7 +3,7 @@ An API driven magic mirror project that will interface with devices such as Alex
 
 ## Features
 
-* WIP - Weather
+* Weather
 * WIP - Traffic
 * Greeting
 * Date & Time
@@ -22,6 +22,8 @@ Only tested on Google Chrome
 ## Uses the following API's
 
 [Dark Sky](https://darksky.net)
+[Forismatic](http://forismatic.com/en/)
 
 ## Thanks
 https://github.com/a-type for the boilerplate.
+SVG Weather Icons - https://codepen.io/joshbader/pen/EjXgqr

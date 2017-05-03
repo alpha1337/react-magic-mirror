@@ -6,7 +6,7 @@ const serve = require('koa-static');
 const logger = require('koa-logger');
 const Router = require('koa-router');
 
-const config = require('./config');
+const config = require('../config');
 
 const Path = require('path');
 const Forecast = require('forecast.io-bluebird');
@@ -24,11 +24,11 @@ app.use(function * (next) {
     }
     catch (err) {
         this.status = err.status || 500;
-        
+
         if (this.status === 500) {
             console.error(err.stack);
         }
-        
+
         this.body = { error: this.status === 500 ? 'Internal server error' : err.message };
     }
 });

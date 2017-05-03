@@ -38,9 +38,11 @@ export default class Weather extends Component {
 
 
                                 {forecast.minutely.icon === 'partly-cloudy-day' &&
-                                <div className='icon cloudy large'>
+                                <div className='icon sun-shower large'>
                                     <div className='cloud'></div>
-                                    <div className='cloud'></div>
+                                    <div className="sun">
+                                        <div className="rays"></div>
+                                    </div>
                                 </div>
                                 }
 
@@ -85,9 +87,11 @@ export default class Weather extends Component {
                         <h4 className="text-center">{date}</h4>
 
                         {data.icon === 'partly-cloudy-day' &&
-                        <div className='icon cloudy'>
+                        <div className='icon sun-shower'>
                             <div className='cloud'></div>
-                            <div className='cloud'></div>
+                            <div className="sun">
+                                <div className="rays"></div>
+                            </div>
                         </div>
                         }
 

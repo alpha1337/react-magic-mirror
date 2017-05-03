@@ -17,7 +17,7 @@ const generateGreeting = (name) => {
             text = greeting.text.replace('%N', name);
         }
     });
-    
+
     return text;
 };
 
@@ -28,7 +28,7 @@ const generateState = (name) => {
     }
 };
 
-export default class Greeting extends Component {      
+export default class Greeting extends Component {
     componentDidMount() {
         let self = this;
         (function refresh() {
@@ -36,7 +36,7 @@ export default class Greeting extends Component {
             setTimeout(refresh, 60 * 1000);
         })();
     }
-    
+
     render () {
         const state = generateState(this.props.user.name);
         return (
